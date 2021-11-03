@@ -2,7 +2,6 @@ import firebase from 'firebase';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import NavBar from '../../components/navbar';
-import RoundRadioButton from '../../components/RoundRadioButton/RoundRadioButton';
 import './agendamento.css';
 
 function Agendamento() {
@@ -53,7 +52,6 @@ function Agendamento() {
           <div className="form-group mx-auto text-center">
             <h1>Agendamento de Salas</h1>
             <div className="form-group">
-              <RoundRadioButton />
               <label for="enunciado">Lista de blocos da UTF:</label>
               <select
                 onChange={(e) => setPredio(e.target.value)}

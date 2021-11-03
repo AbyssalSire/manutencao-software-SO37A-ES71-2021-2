@@ -1,0 +1,21 @@
+.botao {
+  color: white;
+  padding: 10px;
+  border-radius: 0px;
+  margin: 5px;
+}
+
+.opcao {
+  background-color: grey;
+}
+
+.opcao:hover {
+  background-color: darkgrey;
+  transition: 500ms;
+}
+
+.selecionado {
+  background-color: darkblue;
+
+  transition: 500ms;
+}
