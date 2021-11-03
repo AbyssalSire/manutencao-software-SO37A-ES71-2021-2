@@ -1,12 +1,16 @@
-.cadastro-content{
-    width: 50%;
+.cadastro-content {
+  width: 50%;
 }
-.btn-cadastro{
-    background-color: #0671c8;
-    color: #fff;
+.btn-cadastro {
+  background-color: #0671c8;
+  color: #fff;
 }
 
-.btn-cadastro:hover{
-    background-color: #008cff;
-    color: #fff;
+.btn-cadastro:hover {
+  background-color: #008cff;
+  color: #fff;
+}
+
+#dadosExtras {
+  max-width: 75%;
 }
