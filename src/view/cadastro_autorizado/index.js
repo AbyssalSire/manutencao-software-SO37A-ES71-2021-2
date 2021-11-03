@@ -17,6 +17,19 @@ function Cadastro_autorizado() {
   const storage = firebase.storage();
   const db = firebase.firestore();
 
+  function validarImagem(event) {
+    const arquivo = event.target.files[0];
+    const nome = arquivo.name;
+    const extensoesPermitidas = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+    if (extensoesPermitidas.exec(nome)) {
+      setAvatar(arquivo);
+    } else {
+      alert('Tipo de arquivo invalido');
+      event.target.value = '';
+    }
+  }
+
   function cadastrar() {
     setCarregando(1);
     storage
@@ -120,9 +133,9 @@ function Cadastro_autorizado() {
           <div className="form-group">
             <label>Upload do avatar</label>
             <input
-              onChange={(e) => setAvatar(e.target.files[0])}
+              onChange={(e) => validarImagem(e)}
               type="file"
-              accept=".jpg, .jpeg, .png"
+              accept="image/*"
               className="form-control mx-auto"
             />
           </div>
