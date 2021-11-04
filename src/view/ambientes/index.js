@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import NavBar from '../../components/navbar';
-import Card from '../../components/card';
+import React, { useEffect, useState } from 'react';
 import Bloco_texto from '../../components/bloco_texto';
-import { useSelector } from 'react-redux';
+import NavBar from '../../components/navbar';
 import firebase from '../../config/firebase';
 
 function Ambientes() {
