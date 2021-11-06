@@ -19,10 +19,49 @@ function Agendamento() {
   const [carregando, setCarregando] = useState(0);
   const email = useSelector((state) => state.usuarioEmail);
 
-  function cadastrar() {
-    setCarregando(1);
+  function buscarConflitos(agendamento, callback) {
+    const dataEHora = (data, hora) => new Date(data + 'T' + hora)
+    const data = agendamento.dataAgendamento
+    const hInicio = dataEHora(data, agendamento.horaAgendamentoInicio)
+    const hFim = dataEHora(data, agendamento.horaAgendamentoFim)
+
     db.collection('agendamento')
-      .add({
+        .where('predio', '==', agendamento.predio)
+        .where('sala', '==', agendamento.sala)
+        .where('dataAgendamento', '==', data)
+        .get()
+    .then(queryResult => {
+       const conflitos = queryResult.docs
+            .map(d => d.data())
+            .filter(a => dataEHora(data, a.horaAgendamentoInicio) < hFim)
+            .filter(a => dataEHora(data, a.horaAgendamentoFim) > hInicio)
+        if (conflitos.length > 0) {
+            throw new Error('Conflito')
+        }
+        callback()
+    })
+    .catch(() => {
+        setMsgTipo('conflito')
+        setCarregando(0)
+    })
+}
+
+function realizarAgendamento(agendamento) {
+    db.collection('agendamento')
+        .add(agendamento)
+    .then(() => {
+        setMsgTipo('ok');
+        setCarregando(0);
+    })
+    .catch(() => {
+        setMsgTipo('erro');
+        setCarregando(0);
+    });  
+}
+
+function cadastrar() {
+    setCarregando(1)
+    const agendamento = {
         predio: predio,
         sala: sala,
         dadosExtras: dadosExtras,
@@ -33,16 +72,12 @@ function Agendamento() {
         horaAgendamentoFim: horaAgendamentoFim,
         responsavelPeloAgendamento: email,
         dataCriado: new Date(),
-      })
-      .then(() => {
-        setMsgTipo('ok');
-        setCarregando(0);
-      })
-      .catch(() => {
-        setMsgTipo('erro');
-        setCarregando(0);
-      });
-  }
+    }
+
+    buscarConflitos(agendamento, () => {
+        realizarAgendamento(agendamento)
+    })
+}
 
   return (
     <body>
@@ -205,6 +240,8 @@ function Agendamento() {
 
         {msgTipo === 'ok' && <span>Agendado com sucesso!</span>}
         {msgTipo === 'erro' && <span>Erro ao agendar</span>}
+        {msgTipo === 'conflito' && <span>Horário indisponível</span>}
+        
       </div>
     </body>
   );
