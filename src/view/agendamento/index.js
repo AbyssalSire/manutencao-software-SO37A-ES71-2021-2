@@ -1,7 +1,9 @@
-import firebase from 'firebase';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import NavBar from '../../components/navbar';
+import RoundRadioButton from '../../components/RoundRadioButton/RoundRadioButton';
+import Select from '../../components/Select/Select';
+import firebase from '../../config/firebase';
 import './agendamento.css';
 
 function Agendamento() {
@@ -14,70 +16,99 @@ function Agendamento() {
   const [dataAgendamento, setData] = useState();
   const [horaAgendamentoInicio, setHoraInicio] = useState();
   const [horaAgendamentoFim, setHoraFim] = useState();
+  const [salas, setSalas] = useState([]);
   const db = firebase.firestore();
 
   const [carregando, setCarregando] = useState(0);
   const email = useSelector((state) => state.usuarioEmail);
 
+  useEffect(() => {
+    selecionarPredio('areas-administracao');
+  }, []);
+
+  function selecionarPredio(nomePredio) {
+    setPredio(nomePredio);
+    getAmbientes(nomePredio);
+  }
+
+  async function getAmbientes(predio) {
+    let ambientes;
+
+    await db
+      .collection('predios')
+      .get()
+      .then((resultado) => {
+        ambientes = resultado.docs
+          .map((doc) => {
+            return { id: doc.id, ...doc.data() };
+          })
+          .filter((ambiente) => {
+            return ambiente.predio === predio;
+          });
+      });
+
+    setSalas(ambientes);
+  }
+
   function buscarConflitos(agendamento, callback) {
-    const dataEHora = (data, hora) => new Date(data + 'T' + hora)
-    const data = agendamento.dataAgendamento
-    const hInicio = dataEHora(data, agendamento.horaAgendamentoInicio)
-    const hFim = dataEHora(data, agendamento.horaAgendamentoFim)
+    const dataEHora = (data, hora) => new Date(data + 'T' + hora);
+    const data = agendamento.dataAgendamento;
+    const hInicio = dataEHora(data, agendamento.horaAgendamentoInicio);
+    const hFim = dataEHora(data, agendamento.horaAgendamentoFim);
 
     db.collection('agendamento')
-        .where('predio', '==', agendamento.predio)
-        .where('sala', '==', agendamento.sala)
-        .where('dataAgendamento', '==', data)
-        .get()
-    .then(queryResult => {
-       const conflitos = queryResult.docs
-            .map(d => d.data())
-            .filter(a => dataEHora(data, a.horaAgendamentoInicio) < hFim)
-            .filter(a => dataEHora(data, a.horaAgendamentoFim) > hInicio)
+      .where('predio', '==', agendamento.predio)
+      .where('sala', '==', agendamento.sala)
+      .where('dataAgendamento', '==', data)
+      .get()
+      .then((queryResult) => {
+        const conflitos = queryResult.docs
+          .map((d) => d.data())
+          .filter((a) => dataEHora(data, a.horaAgendamentoInicio) < hFim)
+          .filter((a) => dataEHora(data, a.horaAgendamentoFim) > hInicio);
         if (conflitos.length > 0) {
-            throw new Error('Conflito')
+          throw new Error('Conflito');
         }
-        callback()
-    })
-    .catch(() => {
-        setMsgTipo('conflito')
-        setCarregando(0)
-    })
-}
+        callback();
+      })
+      .catch(() => {
+        setMsgTipo('conflito');
+        setCarregando(0);
+      });
+  }
 
-function realizarAgendamento(agendamento) {
+  function realizarAgendamento(agendamento) {
     db.collection('agendamento')
-        .add(agendamento)
-    .then(() => {
+      .add(agendamento)
+      .then(() => {
         setMsgTipo('ok');
         setCarregando(0);
-    })
-    .catch(() => {
+      })
+      .catch(() => {
         setMsgTipo('erro');
         setCarregando(0);
-    });  
-}
+      });
+  }
 
-function cadastrar() {
-    setCarregando(1)
+  function cadastrar() {
+    setCarregando(1);
     const agendamento = {
-        predio: predio,
-        sala: sala,
-        dadosExtras: dadosExtras,
-        funcPessoa: funcPessoa,
-        pessoaNome: pessoaNome,
-        dataAgendamento: dataAgendamento,
-        horaAgendamentoInicio: horaAgendamentoInicio,
-        horaAgendamentoFim: horaAgendamentoFim,
-        responsavelPeloAgendamento: email,
-        dataCriado: new Date(),
-    }
+      predio: predio,
+      sala: sala,
+      dadosExtras: dadosExtras,
+      funcPessoa: funcPessoa,
+      pessoaNome: pessoaNome,
+      dataAgendamento: dataAgendamento,
+      horaAgendamentoInicio: horaAgendamentoInicio,
+      horaAgendamentoFim: horaAgendamentoFim,
+      responsavelPeloAgendamento: email,
+      dataCriado: new Date(),
+    };
 
     buscarConflitos(agendamento, () => {
-        realizarAgendamento(agendamento)
-    })
-}
+      realizarAgendamento(agendamento);
+    });
+  }
 
   return (
     <body>
@@ -86,43 +117,11 @@ function cadastrar() {
         <form action="">
           <div className="form-group mx-auto text-center">
             <h1>Agendamento de Salas</h1>
-            <div className="form-group">
-              <label for="enunciado">Lista de blocos da UTF:</label>
-              <select
-                onChange={(e) => setPredio(e.target.value)}
-                name="predio"
-                id="predio"
-                className="form-control mx-auto ">
-                <option disabled selected value>
-                  -- Selecione um bloco da UTF --
-                </option>
-                <option value="areas-administracao">
-                  Áreas administraticas
-                </option>
-                <option value="bloco-a">Bloco A</option>
-                <option value="bloco-ghi">Bloco GHI</option>
-                <option value="bloco-k">Bloco K</option>
-                <option value="bloco-s">Bloco S</option>
-              </select>
-            </div>
+            <RoundRadioButton selecionarPredio={selecionarPredio} />
             <br />
             <div className="form-group">
               <label for="enunciado">Lista de salas disponíveis</label>
-              <select
-                onChange={(e) => setSala(e.target.value)}
-                name="sala"
-                id="sala"
-                className="form-control mx-auto ">
-                <option disabled selected value>
-                  -- Selecione o número da sala --
-                </option>
-                <option value="015">Sala 015</option>
-                <option value="105">Sala 105</option>
-                <option value="205">Sala 205</option>
-                <option value="323">Sala 323</option>
-                <option value="anfiteatro">Sala Anfiteatro</option>
-                <option value="reunioes">Sala reuniões</option>
-              </select>
+              <Select salas={salas} selectOption={setSala} />
             </div>
             <br />
             <div className="form-group">
@@ -241,7 +240,6 @@ function cadastrar() {
         {msgTipo === 'ok' && <span>Agendado com sucesso!</span>}
         {msgTipo === 'erro' && <span>Erro ao agendar</span>}
         {msgTipo === 'conflito' && <span>Horário indisponível</span>}
-        
       </div>
     </body>
   );
