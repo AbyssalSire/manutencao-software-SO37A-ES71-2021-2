@@ -17,6 +17,20 @@ function Cadastro_autorizado() {
   const storage = firebase.storage();
   const db = firebase.firestore();
 
+  function validarEmailInput(email) {
+    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!regex.test(email)) {
+      throw new Error("Email inválido")
+    }
+  }
+
+  function validarTelefoneInput(telefone) {
+    const regex = /^[\+]?([0-9]{2,3})?[(]?([0-9]{2})[)]?[ ]?([0-9]{4,5})([0-9]{4})$/;
+    if (!regex.test(telefone)) {
+      throw new Error("Telefone inválido")
+    }
+  }
+
   function validarImagem(event) {
     const arquivo = event.target.files[0];
     const nome = arquivo.name;
@@ -32,6 +46,16 @@ function Cadastro_autorizado() {
 
   function cadastrar() {
     setCarregando(1);
+
+    try {
+      validarEmailInput(emailCadastrado);
+      validarTelefoneInput(telefone);
+    } catch (e) {
+      alert(e.message);
+      setCarregando(0);
+      return;
+    }
+
     storage
       .ref(`imagens/${avatar.name}`)
       .put(avatar)
