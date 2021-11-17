@@ -17,17 +17,24 @@ function Cadastro_autorizado() {
   const storage = firebase.storage();
   const db = firebase.firestore();
 
+  const validarCampoTexto = (valor) => {
+    const regex = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
+    return regex.test(valor);
+  };
+
   function validarEmailInput(email) {
-    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const regex =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!regex.test(email)) {
-      throw new Error("Email inválido")
+      throw new Error('Email inválido');
     }
   }
 
   function validarTelefoneInput(telefone) {
-    const regex = /^[\+]?([0-9]{2,3})?[(]?([0-9]{2})[)]?[ ]?([0-9]{4,5})([0-9]{4})$/;
+    const regex =
+      /^[\+]?([0-9]{2,3})?[(]?([0-9]{2})[)]?[ ]?([0-9]{4,5})([0-9]{4})$/;
     if (!regex.test(telefone)) {
-      throw new Error("Telefone inválido")
+      throw new Error('Telefone inválido');
     }
   }
 
@@ -53,6 +60,13 @@ function Cadastro_autorizado() {
     } catch (e) {
       alert(e.message);
       setCarregando(0);
+      return;
+    }
+
+    if (!validarCampoTexto(nome)) {
+      alert('Há caracteres inválidos nos campos');
+      setCarregando(0);
+
       return;
     }
 
@@ -87,7 +101,9 @@ function Cadastro_autorizado() {
         alert('Pessoa autorizada cadastrado com sucesso');
         break;
       case 'erro':
-        alert('Erro ao cadastrar pessoa autorizada');
+        alert(
+          'Não foi possivel completar a operação, por favor tente mais tarde'
+        );
         break;
       case 'arqInv':
         alert('Tipo de arquivo invalido');

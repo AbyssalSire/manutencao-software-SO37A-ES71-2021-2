@@ -19,8 +19,26 @@ function Cadastro_ambientes() {
     console.log(nomePredio);
   }
 
+  const validarNomeResponsavel = (valor) => {
+    const regex = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
+    return regex.test(valor);
+  };
+
+  const validarNumeroSala = (valor) => {
+    const regex = /^[A-Za-z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
+    return regex.test(valor);
+  };
+
   function cadastrar() {
     setCarregando(1);
+
+    if (!validarNomeResponsavel(responsavel) || !validarNumeroSala(sala)) {
+      alert('Há caracteres inválidos nos campos');
+      setCarregando(0);
+
+      return;
+    }
+
     db.collection('predios')
       .add({
         predio: predio,
@@ -45,7 +63,9 @@ function Cadastro_ambientes() {
         alert('Ambiente cadastrado com sucesso');
         break;
       case 'erro':
-        alert('Erro ao cadastrar ambiente');
+        alert(
+          'Não foi possivel completar a operação, por favor tente mais tarde'
+        );
         break;
       default:
     }
