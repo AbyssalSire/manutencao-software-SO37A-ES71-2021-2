@@ -25,9 +25,28 @@ function Cadastro_autorizado() {
   }
 
   function validarTelefoneInput(telefone) {
-    const regex = /^[\+]?([0-9]{2,3})?[(]?([0-9]{2})[)]?[ ]?([0-9]{4,5})([0-9]{4})$/;
+    const regex = /^[(]([0-9]{2})[)]([0-9]{9})$/;
     if (!regex.test(telefone)) {
-      throw new Error("Telefone inválido")
+      throw new Error("Telefone inválido.")
+    }
+  }
+
+  const mascaraTelefoneRegexpPreenchimento = /^[(]?[0-9]{0,2}[)]?[0-9]{0,9}$/;
+  function aplicarMascaraTelefone(novoTelefone) {
+
+    // 1- tentar colocar espaço entre ")" e o proximo numero (lembrar de trocar no regex do validarEmailInput)
+    // 2- se o primeiro caractere não for número ou "(" a validação quebra 
+
+    if (novoTelefone.indexOf("(") != 0) {
+      novoTelefone = "(" + novoTelefone
+    } 
+
+    if (novoTelefone.length > 3 && novoTelefone.indexOf(")") != 3) {
+      novoTelefone = novoTelefone.slice(0,3) + ")" + novoTelefone.slice(3)
+    }
+
+    if (mascaraTelefoneRegexpPreenchimento.test(novoTelefone)) {
+      setTelefone(novoTelefone);
     }
   }
 
@@ -134,11 +153,13 @@ function Cadastro_autorizado() {
             <label for="enunciado">Telefone:</label>
             <br />
             <input
-              onChange={(e) => setTelefone(e.target.value)}
+              onChange={(e) => aplicarMascaraTelefone(e.target.value)}
               type="text"
+              value={telefone}
               className="form-control mx-auto"
               id="pessoa-fone"
               name="pessoa-fone"
+              placeholder="(11) 912345678"
             />
             <br />
           </div>
@@ -151,6 +172,7 @@ function Cadastro_autorizado() {
               className="form-control mx-auto"
               id="pessoa-email"
               name="pessoa-email"
+              placeholder="email@provedor.com"
             />
             <br />
           </div>
