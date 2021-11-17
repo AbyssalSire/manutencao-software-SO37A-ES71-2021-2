@@ -110,6 +110,21 @@ function Agendamento() {
     });
   }
 
+  useEffect(() => {
+    switch (msgTipo) {
+      case 'ok':
+        alert('Agendament realizado com sucesso');
+        break;
+      case 'erro':
+        alert('Erro ao realizar agendamento');
+        break;
+      case 'conflito':
+        alert('O horário selecionado está indisponível');
+        break;
+      default:
+    }
+  }, [msgTipo]);
+
   return (
     <body>
       <NavBar />
@@ -236,10 +251,6 @@ function Agendamento() {
             </div>
           </div>
         </form>
-
-        {msgTipo === 'ok' && <span>Agendado com sucesso!</span>}
-        {msgTipo === 'erro' && <span>Erro ao agendar</span>}
-        {msgTipo === 'conflito' && <span>Horário indisponível</span>}
       </div>
     </body>
   );
