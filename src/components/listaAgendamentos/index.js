@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './listaAgendamentos.css'
 
-function ListaAgendamentos({predio, sala, dataAgendamento, horaAgendamentoInicio, horaAgendamentoFim, pessoaNome}) {
+function ListaAgendamentos({predio, sala, dataAgendamento, horaAgendamentoInicio, horaAgendamentoFim, pessoaNome, responsavelPeloAgendamento}) {
     return (
         <div className="col-md-3 col-sm-12 cartao text-center">
             <div className="texto-body">
@@ -12,6 +12,7 @@ function ListaAgendamentos({predio, sala, dataAgendamento, horaAgendamentoInicio
                     Inicio: {horaAgendamentoInicio} <br />
                     Fim: {horaAgendamentoFim} <br />
                     Agendado para {pessoaNome}<br />
+                    Agendado por: {responsavelPeloAgendamento} <br />
                 </p>
 
             </div>

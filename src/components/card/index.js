@@ -24,7 +24,7 @@ function Card({key, nome, funcao, emailCadastrado, telefone, avatar, dadosExtras
                 <p className="card-text text-justify">
                 E-mail para contato: {emailCadastrado} <br /> 
                 Telefone para contato: {telefone} <br /> 
-                Dados extras: {dadosExtras}
+                Dados extras: {dadosExtras} <br />
                 </p>
             </div>
         </div>

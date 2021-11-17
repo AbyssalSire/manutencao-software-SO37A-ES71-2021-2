@@ -26,9 +26,8 @@ function ListaAgendamento() {
             <NavBar />
             <div className="col-12 p-3 my-3 bg-dark text-white">
                 <div className="row">
-                    <p>teste</p>
                     {
-                        agendamento.map(item=><ListaAgendamentos predio={item.predio} sala={item.sala} dataAgendamento={item.dataAgendamento} horaAgendamentoInicio={item.horaAgendamentoInicio} horaAgendamentoFim={item.horaAgendamentoFim} pessoaNome={item.pessoaNome}/>)
+                        agendamento.map(item=><ListaAgendamentos predio={item.predio} sala={item.sala} dataAgendamento={item.dataAgendamento} horaAgendamentoInicio={item.horaAgendamentoInicio} horaAgendamentoFim={item.horaAgendamentoFim} pessoaNome={item.pessoaNome} responsavelPeloAgendamento={item.responsavelPeloAgendamento}/>)
                     }
                 </div>
             </div>
