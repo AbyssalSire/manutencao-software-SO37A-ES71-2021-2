@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from '../../components/navbar';
 import './cadastro_autorizado.css';
 
@@ -24,8 +24,8 @@ function Cadastro_autorizado() {
 
     if (extensoesPermitidas.exec(nome)) {
       setAvatar(arquivo);
-    } else {
-      alert('Tipo de arquivo invalido');
+    } else if (event.target.value !== '') {
+      setMsgTipo('arqInv');
       event.target.value = '';
     }
   }
@@ -56,6 +56,21 @@ function Cadastro_autorizado() {
           });
       });
   }
+
+  useEffect(() => {
+    switch (msgTipo) {
+      case 'ok':
+        alert('Pessoa autorizada cadastrado com sucesso');
+        break;
+      case 'erro':
+        alert('Erro ao cadastrar pessoa autorizada');
+        break;
+      case 'arqInv':
+        alert('Tipo de arquivo invalido');
+        break;
+      default:
+    }
+  }, [msgTipo]);
 
   return (
     <body>
@@ -156,8 +171,6 @@ function Cadastro_autorizado() {
             )}
           </div>
         </form>
-        {msgTipo === 'ok' && <span>Cadastrado com sucesso!</span>}
-        {msgTipo === 'erro' && <span>Erro ao cadastrar</span>}
       </div>
     </body>
   );
