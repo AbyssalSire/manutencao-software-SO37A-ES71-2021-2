@@ -113,10 +113,10 @@ function Agendamento() {
   useEffect(() => {
     switch (msgTipo) {
       case 'ok':
-        alert('Ambiente cadastrado com sucesso');
+        alert('Agendament realizado com sucesso');
         break;
       case 'erro':
-        alert('Erro ao cadastrar ambiente');
+        alert('Erro ao realizar agendamento');
         break;
       case 'conflito':
         alert('O horário selecionado está indisponível');
