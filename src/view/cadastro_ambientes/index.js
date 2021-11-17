@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import NavBar from '../../components/navbar';
 import RoundRadioButton from '../../components/RoundRadioButton/RoundRadioButton';
@@ -38,6 +38,18 @@ function Cadastro_ambientes() {
         setCarregando(0);
       });
   }
+
+  useEffect(() => {
+    switch (msgTipo) {
+      case 'ok':
+        alert('Ambiente cadastrado com sucesso');
+        break;
+      case 'erro':
+        alert('Erro ao cadastrar ambiente');
+        break;
+      default:
+    }
+  }, [msgTipo]);
 
   return (
     <body>
@@ -106,8 +118,6 @@ function Cadastro_ambientes() {
             )}
           </div>
         </form>
-        {msgTipo === 'ok' && <span>Sucesso ao cadastrar</span>}
-        {msgTipo === 'erro' && <span>Erro ao cadastrar</span>}
       </div>
     </body>
   );
