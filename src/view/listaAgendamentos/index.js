@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import ListaAgendamentos from '../../components/listaAgendamentos';
 import NavBar from '../../components/navbar';
 import firebase from '../../config/firebase';
+import './listaAgendamentos.css';
 
-const getGrupoAgendamentoVazio = () => new Object({
-  'cartao-expirado': [],
-  'cartao-reservado': [],
-  'cartao-emandamento': []
-})
+const getGrupoAgendamentoVazio = () =>
+  new Object({
+    'cartao-expirado': [],
+    'cartao-reservado': [],
+    'cartao-emandamento': [],
+  });
 
 function ListaAgendamento() {
   const [agendamento, setAgendamento] = useState(getGrupoAgendamentoVazio());
@@ -18,8 +20,14 @@ function ListaAgendamento() {
 
   function statusAgendamento(agendamento) {
     const agora = new Date();
-    const inicio = dataEHora(agendamento.dataAgendamento, agendamento.horaAgendamentoInicio);
-    const fim = dataEHora(agendamento.dataAgendamento, agendamento.horaAgendamentoFim);
+    const inicio = dataEHora(
+      agendamento.dataAgendamento,
+      agendamento.horaAgendamentoInicio
+    );
+    const fim = dataEHora(
+      agendamento.dataAgendamento,
+      agendamento.horaAgendamentoFim
+    );
 
     if (agora > inicio && agora < fim) {
       return 'cartao-emandamento';
@@ -33,29 +41,32 @@ function ListaAgendamento() {
   }
 
   function ordernarAgendamentos(agendamentos) {
-
     const mapaDatas = {};
     for (const agendamento of agendamentos) {
       const data = agendamento.dataAgendamento;
       if (!mapaDatas[data]) mapaDatas[data] = [];
       mapaDatas[data].push(agendamento);
     }
-    
+
     const mapaDatasOrdenado = {};
     for (const data in mapaDatas) {
-      mapaDatasOrdenado[data] = mapaDatas[data].sort((a, b) => 
-        dataEHora(data, a.horaAgendamentoInicio) > dataEHora(data, b.horaAgendamentoInicio))
+      mapaDatasOrdenado[data] = mapaDatas[data].sort(
+        (a, b) =>
+          dataEHora(data, a.horaAgendamentoInicio) >
+          dataEHora(data, b.horaAgendamentoInicio)
+      );
     }
 
-    const agendamentosOrdenados = []
+    const agendamentosOrdenados = [];
     for (const data in mapaDatasOrdenado) {
       for (const agendamento of mapaDatasOrdenado[data]) {
         agendamentosOrdenados.push(agendamento);
       }
     }
 
-    return agendamentosOrdenados.sort((a, b) =>
-      new Date(a.dataAgendamento) > new Date(b.dataAgendamento));
+    return agendamentosOrdenados.sort(
+      (a, b) => new Date(a.dataAgendamento) > new Date(b.dataAgendamento)
+    );
   }
 
   function agruparAgendamentos(agendamentos) {
@@ -83,9 +94,7 @@ function ListaAgendamento() {
         });
 
         setAgendamento(
-          agruparAgendamentos(
-            ordernarAgendamentos(listaDeAgendamento)
-          )
+          agruparAgendamentos(ordernarAgendamentos(listaDeAgendamento))
         );
       });
   }, []);
@@ -93,9 +102,10 @@ function ListaAgendamento() {
   return (
     <body>
       <NavBar />
-      <div className="col-12 p-3 my-3 bg-dark text-white">
-      <h3>Em andamento</h3>
-      <div className="row">
+      <div className=" bg-dark text-white agendamentos-content">
+        <h2>Lista de agendamentos</h2>
+        <h3>Em andamento</h3>
+        <div className="agendamentos">
           {agendamento['cartao-emandamento'].map((item) => (
             <ListaAgendamentos
               status={statusAgendamento(item)}
@@ -110,7 +120,7 @@ function ListaAgendamento() {
           ))}
         </div>
         <h3>Reservados</h3>
-        <div className="row">
+        <div className="agendamentos">
           {agendamento['cartao-reservado'].map((item) => (
             <ListaAgendamentos
               status={statusAgendamento(item)}
@@ -125,7 +135,7 @@ function ListaAgendamento() {
           ))}
         </div>
         <h3>Expirados</h3>
-        <div className="row">
+        <div className="agendamentos">
           {agendamento['cartao-expirado'].map((item) => (
             <ListaAgendamentos
               status={statusAgendamento(item)}
