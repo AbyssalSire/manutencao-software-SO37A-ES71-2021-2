@@ -74,7 +74,7 @@ function Cadastro_ambientes() {
   return (
     <body>
       <NavBar />
-      <div className="container p-3 my-3 bg-dark text-white cadastro-content">
+      <div className="bg-dark text-white cadastro-content">
         <div className="row">
           <h1 className="mx-auto text-center titulo-form">
             Cadastro novo ambiente
@@ -100,29 +100,29 @@ function Cadastro_ambientes() {
               <option value="bloco-s">Bloco S</option>
             </select> */}
           </div>
-          <br />
-          <div className="form-group  mx-auto text-center">
-            <label for="enunciado">Numero da Sala</label>
-            <input
-              onChange={(e) => setSala(e.target.value)}
-              type="text"
-              id="sala-numero"
-              name="sala-numero"
-              className="form-control  mx-auto"
-            />
+          <div className="input-horizontal">
+            <div className="form-group  mx-auto text-center">
+              <label for="enunciado">Numero da Sala</label>
+              <input
+                onChange={(e) => setSala(e.target.value)}
+                type="text"
+                id="sala-numero"
+                name="sala-numero"
+                className="form-control  mx-auto"
+              />
+            </div>
+
+            <div className="form-group  mx-auto text-center input-label">
+              <label for="enunciado">Responsável pelo prédio</label>
+              <input
+                onChange={(e) => setResponsavel(e.target.value)}
+                type="text"
+                id="responsavel"
+                name="responsavel"
+                className="form-control  mx-auto"
+              />
+            </div>
           </div>
-          <br />
-          <div className="form-group  mx-auto text-center">
-            <label for="enunciado">Responsável pelo prédio</label>
-            <input
-              onChange={(e) => setResponsavel(e.target.value)}
-              type="text"
-              id="responsavel"
-              name="responsavel"
-              className="form-control  mx-auto"
-            />
-          </div>
-          <br />
           <div className="form-group  mx-auto text-center">
             {carregando ? (
               <div className="spinner-border text-secondary" role="status">
@@ -131,7 +131,7 @@ function Cadastro_ambientes() {
             ) : (
               <button
                 type="button"
-                className="btn btn-lg btn-block mt-3 mb-5 btn-cadastro"
+                className="btn btn-block mt-3 mb-5 btn-cadastro"
                 onClick={cadastrar}>
                 Cadastro
               </button>
