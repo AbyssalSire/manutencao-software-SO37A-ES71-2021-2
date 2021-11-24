@@ -1,23 +1,11 @@
 .cartao {
-  height: 500px;
-  background: black;
+  min-height: 360px;
+  background: rgb(0, 0, 0);
   padding: 20px;
   padding-top: 30px;
   margin: 10px;
   width: 31%;
   overflow: auto;
-}
-
-.btn-detalhes {
-  background-color: #0671c8;
-  color: #fff;
-}
-
-.btn-detalhes:hover {
-  background-color: #008cff;
-  color: #fff;
-  box-shadow: none;
-  padding-bottom: 3px;
 }
 
 .img-cartao {

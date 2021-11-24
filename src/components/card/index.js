@@ -27,7 +27,7 @@ function Card({
     <div className="cartao">
       <img src={urlImagem} id="imgCard" alt="" className="img-cartao" />
 
-      <div className="">
+      <div>
         <h5>{nome}</h5>
         <h5>Função: {funcao}</h5>
         <p className="conteudo-card">
