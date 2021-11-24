@@ -1,25 +1,25 @@
-.cartao{
-    background: black;
-    padding: 20px;
-    margin-right: 5%;
-    margin-left: 5%;
-    width: fit-content;
-    height: fit-content;
+.cartao {
+  height: fit-content;
+  background: rgb(0, 0, 0);
+  padding: 20px;
+  padding-top: 50px;
+  margin: 10px;
+  width: 31%;
+  overflow: auto;
+  text-align: center;
 }
 
-.btn-detalhes{
-    background-color: #0671c8;
-    color: #fff;
+.btn-detalhes {
+  background-color: #0671c8;
+  color: #fff;
+  height: 75px;
+  min-width: 150px;
+  padding-top: 25px;
 }
 
-.btn-detalhes:hover{
-    background-color: #008cff;
-    color: #fff;
-    box-shadow: none;
-    padding-bottom: 3px;
-}
-
-.texto-text{
-    max-height: 100px;
-    overflow: hidden;
+.btn-detalhes:hover {
+  background-color: #008cff;
+  color: #fff;
+  box-shadow: none;
+  padding-bottom: 3px;
 }
