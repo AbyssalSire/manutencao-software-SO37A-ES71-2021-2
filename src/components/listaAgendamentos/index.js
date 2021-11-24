@@ -11,13 +11,11 @@ function ListaAgendamentos({
   pessoaNome,
   responsavelPeloAgendamento,
 }) {
-
   return (
-    <div
-      className={`col-md-3 col-sm-12 cartao text-center ${status}`}>
+    <div className={`col-md-3 col-sm-12 cartao text-center ${status}`}>
       <div className="texto-body">
         <h5>Sala: {sala}</h5>
-        <p className="texto-text text-justify">
+        <p className="conteudo-agendamento">
           Prédio: {predio} <br />
           Data agendada: {dataAgendamento} <br />
           Inicio: {horaAgendamentoInicio} <br />

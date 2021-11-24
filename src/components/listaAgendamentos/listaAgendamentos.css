@@ -20,6 +20,11 @@
   padding-bottom: 3px;
 }
 
+.conteudo-agendamento {
+  text-align: left;
+  margin-top: 15px;
+}
+
 .texto-text {
   max-height: fit-content;
   overflow: auto;
