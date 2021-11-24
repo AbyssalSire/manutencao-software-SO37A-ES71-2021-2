@@ -133,7 +133,7 @@ function Agendamento() {
           <div className="form-group mx-auto text-center">
             <h1>Agendamento de Salas</h1>
 
-            <label>Prédios</label>
+            <label>Prédio da UTF</label>
             <RoundRadioButton selecionarPredio={selecionarPredio} />
             <br />
 

@@ -25,3 +25,8 @@
   max-height: 100px;
   max-width: 50%;
 }
+
+.conteudo-card {
+  margin-top: 15px;
+  text-align: left;
+}

@@ -30,7 +30,7 @@ function Card({
       <div className="">
         <h5>{nome}</h5>
         <h5>Função: {funcao}</h5>
-        <p className=" ">
+        <p className="conteudo-card">
           E-mail para contato: {emailCadastrado} <br />
           Telefone para contato: {telefone} <br />
           Dados extras: {dadosExtras} <br />
