@@ -155,100 +155,101 @@ function Agendamento() {
                 rows="5"></textarea>
               <br />
             </div>
-
-            <div className="form-group">
-              <label for="enunciado">
-                Função da pessoa requisitando agendamento:{' '}
-              </label>
-              <select
-                onChange={(e) => setFuncPessoa(e.target.value)}
-                name="funcPessoa"
-                id="funcPessoa"
-                className="form-control mx-auto ">
-                <option disabled selected value>
-                  -- Selecione a função da pessoa --
-                </option>
-                <option value="aluno">Aluno</option>
-                <option value="professor">Professor</option>
-                <option value="servidor">Servidor</option>
-                <option value="pessoa-de-fora">Pessoa de fora da UTF</option>
-              </select>
-            </div>
-            <br />
-
-            <div className="form-group">
-              <label for="enunciado">Pessoa requisitando agendamento: </label>
-              <input
-                onChange={(e) => setPessoaNome(e.target.value)}
-                type="text"
-                className="form-control mx-auto"
-                id="pessoa-resp"
-                name="pessoa-rest"
-              />
-              <br />
-            </div>
-            <div className="form-group row">
-              <div className="col-6">
+            <div className="input-horizontal">
+              <div className="form-group">
                 <label for="enunciado">
-                  Selecione a data para o agendamento:{' '}
+                  Função da pessoa requisitando agendamento:{' '}
                 </label>
-                <br />
+                <select
+                  onChange={(e) => setFuncPessoa(e.target.value)}
+                  name="funcPessoa"
+                  id="funcPessoa"
+                  className="form-control mx-auto ">
+                  <option disabled selected value>
+                    -- Selecione a função da pessoa --
+                  </option>
+                  <option value="aluno">Aluno</option>
+                  <option value="professor">Professor</option>
+                  <option value="servidor">Servidor</option>
+                  <option value="pessoa-de-fora">Pessoa de fora da UTF</option>
+                </select>
+              </div>
 
-                <br />
-
+              <div className="form-group">
+                <label for="enunciado">Pessoa requisitando agendamento: </label>
                 <input
-                  onChange={(e) => setData(e.target.value)}
-                  type="date"
-                  min="2021-08-23"
+                  onChange={(e) => setPessoaNome(e.target.value)}
+                  type="text"
                   className="form-control mx-auto"
+                  id="pessoa-resp"
+                  name="pessoa-rest"
                 />
-                <br />
-
-                {/**
-                            <button type="button" className="btn btn-success" id="adicionar-mais-dias"
-                            onclick="javascript:alert('Função com problemas, será implementada na segunda etapa, por favor ler o comentário no arquivo scrit.js')">Adicionar
-                            mais dias</button>
-                        */}
               </div>
-
-              <div className="col-6">
-                <label for="enunciado">
-                  Selecione o horário do inicio do Agendamento:{' '}
-                </label>
-                <br />
-
-                <br />
-
-                <input
-                  onChange={(e) => setHoraInicio(e.target.value)}
-                  type="time"
-                  className="form-control mx-auto "
-                />
-                <br />
-
-                <label for="enunciado">
-                  Selecione o horário do inicio do Agendamento:{' '}
-                </label>
-                <br />
-
-                <br />
-
-                <input
-                  onChange={(e) => setHoraFim(e.target.value)}
-                  type="time"
-                  className="form-control mx-auto "
-                />
-                <br />
-
-                {/**
-                            <button type="button" className="btn btn-success" id="adicionar-mais-dias"
-                            onclick="javascript:alert('Função com problemas, será implementada na segunda etapa, por favor ler o comentário no arquivo scrit.js')">Adicionar
-                            mais dias</button>
-                        */}
-              </div>
-              <br />
             </div>
-            <div className="row">
+            <div className="input-horizontal">
+              <div className="form-group row">
+                <div className="col-6">
+                  <label for="enunciado">
+                    Selecione a data para o agendamento:{' '}
+                  </label>
+                  <br />
+
+                  <br />
+
+                  <input
+                    onChange={(e) => setData(e.target.value)}
+                    type="date"
+                    min="2021-08-23"
+                    className="form-control mx-auto"
+                  />
+                  <br />
+
+                  {/**
+                            <button type="button" className="btn btn-success" id="adicionar-mais-dias"
+                            onclick="javascript:alert('Função com problemas, será implementada na segunda etapa, por favor ler o comentário no arquivo scrit.js')">Adicionar
+                            mais dias</button>
+                        */}
+                </div>
+
+                <div className="col-6">
+                  <label for="enunciado">
+                    Selecione o horário do inicio do Agendamento:{' '}
+                  </label>
+                  <br />
+
+                  <br />
+
+                  <input
+                    onChange={(e) => setHoraInicio(e.target.value)}
+                    type="time"
+                    className="form-control mx-auto "
+                  />
+                  <br />
+
+                  <label for="enunciado">
+                    Selecione o horário do inicio do Agendamento:{' '}
+                  </label>
+                  <br />
+
+                  <br />
+
+                  <input
+                    onChange={(e) => setHoraFim(e.target.value)}
+                    type="time"
+                    className="form-control mx-auto "
+                  />
+                  <br />
+
+                  {/**
+                            <button type="button" className="btn btn-success" id="adicionar-mais-dias"
+                            onclick="javascript:alert('Função com problemas, será implementada na segunda etapa, por favor ler o comentário no arquivo scrit.js')">Adicionar
+                            mais dias</button>
+                        */}
+                </div>
+                <br />
+              </div>
+            </div>
+            <div>
               {carregando ? (
                 <div className="spinner-border text-secondary" role="status">
                   <span className="sr-only"></span>

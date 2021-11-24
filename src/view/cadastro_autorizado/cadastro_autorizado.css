@@ -8,6 +8,7 @@
 
 textarea {
   width: 55%;
+  border-radius: 10px;
 }
 
 .btn-cadastro {

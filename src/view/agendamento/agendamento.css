@@ -5,9 +5,27 @@
 .btn-cadastro {
   background-color: #0671c8;
   color: #fff;
+
+  height: 75px;
+  min-width: 150px;
 }
 
 .btn-cadastro:hover {
   background-color: #008cff;
   color: #fff;
+}
+
+.input-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  max-width: 70%;
+  margin: auto;
+  padding: 30px;
+}
+
+textarea {
+  width: 55%;
+  border-radius: 10px;
 }
