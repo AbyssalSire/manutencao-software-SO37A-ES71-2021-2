@@ -63,8 +63,10 @@ function Login() {
   return (
     <body>
       <NavBar />
-      <form className="login-content" action="../paginas/index.html">
-        <div className="login-content container p-3 my-3 bg-dark text-white">
+      <form
+        className="bg-dark text-white login-content"
+        action="../paginas/index.html">
+        <div className=" ">
           {useSelector((state) => state.usuarioLogado) > 0 ? (
             <Redirect to="/"></Redirect>
           ) : null}
