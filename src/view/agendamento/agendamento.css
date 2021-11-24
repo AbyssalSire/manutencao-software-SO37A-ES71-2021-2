@@ -6,8 +6,11 @@
   background-color: #0671c8;
   color: #fff;
 
-  height: 75px;
-  min-width: 150px;
+  font-weight: bold;
+  border-radius: 10px;
+  max-height: 50px;
+  width: 150px;
+  margin: 30px 0px;
 }
 
 .btn-cadastro:hover {

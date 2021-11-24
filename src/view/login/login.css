@@ -8,8 +8,11 @@
 .btn-login {
   background-color: #0671c8;
   color: #fff;
-  height: 75px;
-  min-width: 150px;
+
+  font-weight: bold;
+  border-radius: 10px;
+  height: 50px;
+  width: 150px;
   margin-top: 30px;
 }
 

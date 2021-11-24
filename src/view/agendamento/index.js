@@ -257,7 +257,7 @@ function Agendamento() {
               ) : (
                 <button
                   type="button"
-                  className="btn btn-lg btn-block mt-3 mb-5 btn-cadastro"
+                  className="btn-cadastro"
                   onClick={cadastrar}>
                   Cadastro
                 </button>

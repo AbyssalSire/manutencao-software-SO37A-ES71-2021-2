@@ -12,9 +12,11 @@
 .btn-detalhes {
   background-color: #0671c8;
   color: #fff;
-  height: 75px;
-  min-width: 150px;
-  padding-top: 25px;
+  font-weight: bold;
+  border-radius: 10px;
+  max-height: 50px;
+  width: 170px;
+  margin: 30px 0px;
 }
 
 .btn-detalhes:hover {
