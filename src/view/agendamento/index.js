@@ -50,11 +50,6 @@ function Agendamento() {
     setSalas(ambientes);
   }
 
-  const validarCampoTexto = (valor) => {
-    const regex = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
-    return regex.test(valor);
-  };
-
   function buscarConflitos(agendamento, callback) {
     const dataEHora = (data, hora) => new Date(data + 'T' + hora);
     const data = agendamento.dataAgendamento;
@@ -97,14 +92,6 @@ function Agendamento() {
 
   function cadastrar() {
     setCarregando(1);
-
-    if (!validarCampoTexto(pessoaNome)) {
-      alert('Há caracteres inválidos nos campos');
-      setCarregando(0);
-
-      return;
-    }
-
     const agendamento = {
       predio: predio,
       sala: sala,
@@ -129,15 +116,10 @@ function Agendamento() {
         alert('Agendamento realizado com sucesso');
         break;
       case 'erro':
-        alert(
-          'Não foi possivel completar a operação, por favor tente mais tarde'
-        );
+        alert('Erro ao realizar agendamento');
         break;
       case 'conflito':
         alert('O horário selecionado está indisponível');
-        break;
-      case 'caractere':
-        alert('Há caracteres inválidos nos campos');
         break;
       default:
     }
@@ -152,16 +134,19 @@ function Agendamento() {
             <h1>Agendamento de Salas</h1>
             <RoundRadioButton selecionarPredio={selecionarPredio} />
             <br />
+
             <div className="form-group">
               <label for="enunciado">Lista de salas disponíveis</label>
               <Select salas={salas} selectOption={setSala} />
             </div>
             <br />
+
             <div className="form-group">
               <label for="enunciado">
                 Dados extras do ambiente em questão:
               </label>
               <br />
+
               <textarea
                 onChange={(e) => setDadosExtras(e.target.value)}
                 name="dadosExtras"
@@ -169,8 +154,8 @@ function Agendamento() {
                 cols="50"
                 rows="5"></textarea>
               <br />
-              <br />
             </div>
+
             <div className="form-group">
               <label for="enunciado">
                 Função da pessoa requisitando agendamento:{' '}
@@ -190,6 +175,7 @@ function Agendamento() {
               </select>
             </div>
             <br />
+
             <div className="form-group">
               <label for="enunciado">Pessoa requisitando agendamento: </label>
               <input
@@ -207,7 +193,9 @@ function Agendamento() {
                   Selecione a data para o agendamento:{' '}
                 </label>
                 <br />
+
                 <br />
+
                 <input
                   onChange={(e) => setData(e.target.value)}
                   type="date"
@@ -215,6 +203,7 @@ function Agendamento() {
                   className="form-control mx-auto"
                 />
                 <br />
+
                 {/**
                             <button type="button" className="btn btn-success" id="adicionar-mais-dias"
                             onclick="javascript:alert('Função com problemas, será implementada na segunda etapa, por favor ler o comentário no arquivo scrit.js')">Adicionar
@@ -227,24 +216,30 @@ function Agendamento() {
                   Selecione o horário do inicio do Agendamento:{' '}
                 </label>
                 <br />
+
                 <br />
+
                 <input
                   onChange={(e) => setHoraInicio(e.target.value)}
                   type="time"
                   className="form-control mx-auto "
                 />
                 <br />
+
                 <label for="enunciado">
                   Selecione o horário do inicio do Agendamento:{' '}
                 </label>
                 <br />
+
                 <br />
+
                 <input
                   onChange={(e) => setHoraFim(e.target.value)}
                   type="time"
                   className="form-control mx-auto "
                 />
                 <br />
+
                 {/**
                             <button type="button" className="btn btn-success" id="adicionar-mais-dias"
                             onclick="javascript:alert('Função com problemas, será implementada na segunda etapa, por favor ler o comentário no arquivo scrit.js')">Adicionar
