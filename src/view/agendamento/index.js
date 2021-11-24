@@ -128,10 +128,12 @@ function Agendamento() {
   return (
     <body>
       <NavBar />
-      <div className="container p-3 my-3 bg-dark text-white agendamento-content">
+      <div className="bg-dark text-white agendamento-content">
         <form action="">
           <div className="form-group mx-auto text-center">
             <h1>Agendamento de Salas</h1>
+
+            <label>Prédios</label>
             <RoundRadioButton selecionarPredio={selecionarPredio} />
             <br />
 

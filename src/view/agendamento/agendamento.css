@@ -1,5 +1,9 @@
 .agendamento-content {
   width: 80%;
+  margin: 20px auto;
+  padding: 30px;
+  /* background-color: blue; */
+  border-radius: 20px;
 }
 
 .btn-cadastro {
@@ -31,4 +35,8 @@
 textarea {
   width: 55%;
   border-radius: 10px;
+}
+
+h1 {
+  margin-bottom: 30px;
 }
