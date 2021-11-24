@@ -1,12 +1,12 @@
 import firebase from 'firebase';
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyDsooZ75nQsble-nYx8u3lgXwQyEVp8tW8',
-  authDomain: 'agendamento-de-salas-2b6c4.firebaseapp.com',
-  projectId: 'agendamento-de-salas-2b6c4',
-  storageBucket: 'agendamento-de-salas-2b6c4.appspot.com',
-  messagingSenderId: '291298784811',
-  appId: '1:291298784811:web:a422f83aae8a9469f69c6e',
+  apiKey: 'AIzaSyD7fQsrSRWdeLRSMmRPXQSxEz_u7wl-LBM',
+  authDomain: 'agendamento-de-salas-63038.firebaseapp.com',
+  projectId: 'agendamento-de-salas-63038',
+  storageBucket: 'agendamento-de-salas-63038.appspot.com',
+  messagingSenderId: '978056393978',
+  appId: '1:978056393978:web:556fb76500cb3ef98c0543',
 };
 // Initialize Firebase
 export default firebase.initializeApp(firebaseConfig);
