@@ -115,44 +115,44 @@ function Cadastro_autorizado() {
   return (
     <body>
       <NavBar />
-      <div className="container p-3 my-3 bg-dark text-white mx-auto text-center cadastro-content">
+      <div className="bg-dark text-white mx-auto text-center cadastro-content">
         <h1>Cadastro de novo usuário autorizado </h1>
 
         <form action="../paginas/index.html">
-          <div className="form-group">
-            <label for="enunciado">Nome:</label>
-            <br />
-            <input
-              onChange={(e) => setNome(e.target.value)}
-              type="text"
-              className="form-control mx-auto"
-              id="pessoa-resp"
-              name="pessoa-rest"
-            />
-            <br />
+          <div className="input-horizontal">
+            <div className="form-group">
+              <label for="enunciado">Nome:</label>
+              <br />
+              <input
+                onChange={(e) => setNome(e.target.value)}
+                type="text"
+                className="form-control mx-auto"
+                id="pessoa-resp"
+                name="pessoa-rest"
+              />
+            </div>
+            <div className="form-group">
+              <label for="enunciado">Função da pessoa: </label>
+              <select
+                onChange={(e) => setFuncao(e.target.value)}
+                name="func-pessoa"
+                className="form-control mx-auto"
+                id="func-pessoa">
+                <option disabled selected value>
+                  -- Selecione a função da pessoa --
+                </option>
+                <option value="aluno">Aluno</option>
+                <option value="professor">Professor</option>
+                <option value="servidor">Servidor</option>
+                <option value="pessoa-de-fora">Pessoa de fora da UTF</option>
+              </select>
+            </div>
           </div>
-          <div className="form-group">
-            <label for="enunciado">Função da pessoa: </label>
-            <select
-              onChange={(e) => setFuncao(e.target.value)}
-              name="func-pessoa"
-              className="form-control mx-auto"
-              id="func-pessoa">
-              <option disabled selected value>
-                -- Selecione a função da pessoa --
-              </option>
-              <option value="aluno">Aluno</option>
-              <option value="professor">Professor</option>
-              <option value="servidor">Servidor</option>
-              <option value="pessoa-de-fora">Pessoa de fora da UTF</option>
-            </select>
-          </div>
-          <br />
+
           <div className="form-group">
             <label for="enunciado">Dados extras:</label>
             <br />
             <textarea
-              onChange={(e) => setDadosExtras(e.target.value)}
               onChange={(e) => setDadosExtras(e.target.value)}
               name="dadosExtras"
               id="dadosExtras"
@@ -161,29 +161,31 @@ function Cadastro_autorizado() {
             <br />
             <br />
           </div>
-          <div className="form-group">
-            <label for="enunciado">Telefone:</label>
-            <br />
-            <input
-              onChange={(e) => setTelefone(e.target.value)}
-              type="text"
-              className="form-control mx-auto"
-              id="pessoa-fone"
-              name="pessoa-fone"
-            />
-            <br />
-          </div>
-          <div className="form-group">
-            <label for="enunciado">E-mail:</label>
-            <br />
-            <input
-              onChange={(e) => setEmailCadastrado(e.target.value)}
-              type="text"
-              className="form-control mx-auto"
-              id="pessoa-email"
-              name="pessoa-email"
-            />
-            <br />
+          <div className="input-horizontal">
+            <div className="form-group">
+              <label for="enunciado">Telefone:</label>
+              <br />
+              <input
+                onChange={(e) => setTelefone(e.target.value)}
+                type="text"
+                className="form-control mx-auto"
+                id="pessoa-fone"
+                name="pessoa-fone"
+              />
+              <br />
+            </div>
+            <div className="form-group">
+              <label for="enunciado">E-mail:</label>
+              <br />
+              <input
+                onChange={(e) => setEmailCadastrado(e.target.value)}
+                type="text"
+                className="form-control mx-auto"
+                id="pessoa-email"
+                name="pessoa-email"
+              />
+              <br />
+            </div>
           </div>
           <div className="form-group">
             <label>Upload do avatar</label>
@@ -196,7 +198,7 @@ function Cadastro_autorizado() {
           </div>
           <br />
           <br />
-          <div className="row">
+          <div>
             {carregando ? (
               <div className="spinner-border text-secondary" role="status">
                 <span className="sr-only"></span>
@@ -204,7 +206,7 @@ function Cadastro_autorizado() {
             ) : (
               <button
                 type="button"
-                className="btn btn-lg btn-block mt-3 mb-5 btn-cadastro"
+                className="btn  btn-cadastro"
                 onClick={cadastrar}>
                 Cadastro
               </button>

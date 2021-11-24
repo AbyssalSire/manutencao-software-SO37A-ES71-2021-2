@@ -1,9 +1,21 @@
 .cadastro-content {
-  width: 50%;
+  width: 80%;
+  margin: 50px auto;
+  padding: 30px;
+  /* background-color: blue; */
+  border-radius: 20px;
 }
+
+textarea {
+  width: 55%;
+}
+
 .btn-cadastro {
   background-color: #0671c8;
   color: #fff;
+
+  height: 75px;
+  min-width: 150px;
 }
 
 .btn-cadastro:hover {
@@ -11,6 +23,18 @@
   color: #fff;
 }
 
+.input-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+}
+
 #dadosExtras {
   max-width: 75%;
+}
+
+label {
+  padding: 10px;
 }
