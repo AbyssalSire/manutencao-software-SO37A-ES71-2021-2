@@ -154,7 +154,8 @@ function Agendamento() {
                 name="dadosExtras"
                 id="dadosExtras"
                 cols="50"
-                rows="5"></textarea>
+                rows="5"
+                placeholder="ex.: número de pessoas, etc"></textarea>
               <br />
             </div>
             <div className="input-horizontal">
@@ -185,6 +186,7 @@ function Agendamento() {
                   className="form-control mx-auto"
                   id="pessoa-resp"
                   name="pessoa-rest"
+                  placeholder="ex.: João Silva"
                 />
               </div>
             </div>

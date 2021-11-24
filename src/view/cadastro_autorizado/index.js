@@ -129,6 +129,7 @@ function Cadastro_autorizado() {
                 className="form-control mx-auto"
                 id="pessoa-resp"
                 name="pessoa-rest"
+                placeholder="ex.: João Silva"
               />
             </div>
             <div className="form-group">
@@ -157,7 +158,8 @@ function Cadastro_autorizado() {
               name="dadosExtras"
               id="dadosExtras"
               cols="50"
-              rows="5"></textarea>
+              rows="5"
+              placeholder="ex.: setor, turma, etc"></textarea>
             <br />
             <br />
           </div>
@@ -171,6 +173,7 @@ function Cadastro_autorizado() {
                 className="form-control mx-auto"
                 id="pessoa-fone"
                 name="pessoa-fone"
+                placeholder="ex.: (99)99999999"
               />
               <br />
             </div>
@@ -183,6 +186,7 @@ function Cadastro_autorizado() {
                 className="form-control mx-auto"
                 id="pessoa-email"
                 name="pessoa-email"
+                placeholder="ex.: abc@def.ghi"
               />
               <br />
             </div>

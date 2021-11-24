@@ -109,6 +109,7 @@ function Cadastro_ambientes() {
                 id="sala-numero"
                 name="sala-numero"
                 className="form-control  mx-auto"
+                placeholder="ex.: 1234"
               />
             </div>
 
@@ -120,6 +121,7 @@ function Cadastro_ambientes() {
                 id="responsavel"
                 name="responsavel"
                 className="form-control  mx-auto"
+                placeholder="ex.: João Silva"
               />
             </div>
           </div>
