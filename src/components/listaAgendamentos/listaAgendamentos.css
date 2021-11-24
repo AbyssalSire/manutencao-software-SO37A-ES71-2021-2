@@ -1,25 +1,37 @@
-.cartao{
-    background: black;
-    padding: 20px;
-    margin-right: 5%;
-    margin-left: 5%;
-    width: fit-content;
-    height: fit-content;
+.cartao {
+  background: black;
+  padding: 20px;
+  margin: 10px;
+  max-width: 25%;
+  height: fit-content;
+  overflow: auto;
 }
 
-.btn-detalhes{
-    background-color: #0671c8;
-    color: #fff;
+.btn-detalhes {
+  background-color: #0671c8;
+  color: #fff;
 }
 
-.btn-detalhes:hover{
-    background-color: #008cff;
-    color: #fff;
-    box-shadow: none;
-    padding-bottom: 3px;
+.btn-detalhes:hover {
+  background-color: #008cff;
+  color: #fff;
+  box-shadow: none;
+  padding-bottom: 3px;
 }
 
-.texto-text{
-    max-height: 100px;
-    overflow: auto;
+.texto-text {
+  max-height: fit-content;
+  overflow: auto;
+}
+
+.cartao-expirado {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.cartao-proximo {
+  background-color: rgb(0, 255, 0, 0.2);
+}
+
+.cartao-reservado {
+  background-color: rgb(0, 0, 255, 0.2);
 }

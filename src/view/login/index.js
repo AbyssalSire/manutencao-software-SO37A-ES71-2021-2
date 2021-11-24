@@ -13,8 +13,26 @@ function Login() {
   const dispatch = useDispatch();
   const [carregando, setCarregando] = useState(0);
 
+  function validarEmailInput(email) {
+    const regex =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!regex.test(email)) {
+      alert('Formato de e-mail incorreto');
+      return false;
+    }
+
+    return true;
+  }
+
   function autenticar() {
     setCarregando(1);
+
+    if (!validarEmailInput(email)) {
+      setCarregando(0);
+
+      return;
+    }
+
     firebase
       .auth()
       .signInWithEmailAndPassword(email, senha)
@@ -34,7 +52,9 @@ function Login() {
   useEffect(() => {
     switch (msgTipo) {
       case 'erro':
-        alert('Erro ao logar');
+        alert(
+          'Não foi possivel completar a operação, por favor tente mais tarde'
+        );
         break;
       default:
     }

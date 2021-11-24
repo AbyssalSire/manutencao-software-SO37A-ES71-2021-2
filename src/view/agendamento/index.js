@@ -50,6 +50,11 @@ function Agendamento() {
     setSalas(ambientes);
   }
 
+  const validarCampoTexto = (valor) => {
+    const regex = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
+    return regex.test(valor);
+  };
+
   function buscarConflitos(agendamento, callback) {
     const dataEHora = (data, hora) => new Date(data + 'T' + hora);
     const data = agendamento.dataAgendamento;
@@ -92,6 +97,14 @@ function Agendamento() {
 
   function cadastrar() {
     setCarregando(1);
+
+    if (!validarCampoTexto(pessoaNome)) {
+      alert('Há caracteres inválidos nos campos');
+      setCarregando(0);
+
+      return;
+    }
+
     const agendamento = {
       predio: predio,
       sala: sala,
@@ -113,13 +126,18 @@ function Agendamento() {
   useEffect(() => {
     switch (msgTipo) {
       case 'ok':
-        alert('Agendament realizado com sucesso');
+        alert('Agendamento realizado com sucesso');
         break;
       case 'erro':
-        alert('Erro ao realizar agendamento');
+        alert(
+          'Não foi possivel completar a operação, por favor tente mais tarde'
+        );
         break;
       case 'conflito':
         alert('O horário selecionado está indisponível');
+        break;
+      case 'caractere':
+        alert('Há caracteres inválidos nos campos');
         break;
       default:
     }
