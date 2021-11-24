@@ -1,9 +1,10 @@
 .cartao {
+  height: 300px;
   background: black;
   padding: 20px;
+  padding-top: 30px;
   margin: 10px;
   max-width: 25%;
-  height: fit-content;
   overflow: auto;
 }
 
