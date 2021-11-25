@@ -235,7 +235,7 @@ function Agendamento() {
                 />
                 <br />
                 <label for="enunciado">
-                  Selecione o horário do inicio do Agendamento:{' '}
+                  Selecione o horário do fim do Agendamento:{' '}
                 </label>
                 <br />
                 <br />
