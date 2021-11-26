@@ -17,9 +17,17 @@
 }
 
 .cartao-emandamento {
+<<<<<<< HEAD
   background-color: rgb(144, 136, 14, 0.52);
 }
 
 .cartao-reservado {
   background-color: rgb(255, 0, 0, 0.2);
+=======
+  background-color: rgba(144, 136, 14, 0.52);
+}
+
+.cartao-reservado {
+  background-color: rgba(255, 0, 0, 0.2);
+>>>>>>> 34110115a9f0092a5050982d3006964d9d9e33c1
 }
