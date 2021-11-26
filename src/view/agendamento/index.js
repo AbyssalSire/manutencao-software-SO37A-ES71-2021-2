@@ -135,13 +135,51 @@ function Agendamento() {
 
             <label>Prédio da UTF</label>
             <RoundRadioButton selecionarPredio={selecionarPredio} />
-            <br />
 
-            <div className="form-group">
-              <label for="enunciado">Lista de salas disponíveis</label>
-              <Select salas={salas} selectOption={setSala} />
+            <div className="input-horizontal">
+              <div className="center">
+                <label for="enunciado">Lista de salas disponíveis</label>
+                <Select salas={salas} selectOption={setSala} />
+              </div>
+
+              <div className="form-group">
+                <div>
+                  <label for="enunciado">
+                    Selecione a data para o agendamento:{' '}
+                  </label>
+                  <input
+                    onChange={(e) => setData(e.target.value)}
+                    type="date"
+                    min="2021-08-23"
+                    className="form-control mx-auto"
+                  />
+                </div>
+              </div>
             </div>
-            <br />
+
+            <div className="input-horizontal">
+              <div>
+                <label for="enunciado">
+                  Selecione o horário do inicio do Agendamento:
+                </label>
+                <input
+                  onChange={(e) => setHoraInicio(e.target.value)}
+                  type="time"
+                  className="form-control mx-auto "
+                />
+              </div>
+
+              <div>
+                <label for="enunciado">
+                  Selecione o horário do fim do Agendamento:{' '}
+                </label>
+                <input
+                  onChange={(e) => setHoraFim(e.target.value)}
+                  type="time"
+                  className="form-control mx-auto "
+                />
+              </div>
+            </div>
 
             <div className="form-group">
               <label for="enunciado">
@@ -190,69 +228,7 @@ function Agendamento() {
                 />
               </div>
             </div>
-            <div className="input-horizontal">
-              <div className="form-group row">
-                <div className="col-6">
-                  <label for="enunciado">
-                    Selecione a data para o agendamento:{' '}
-                  </label>
-                  <br />
 
-                  <br />
-
-                  <input
-                    onChange={(e) => setData(e.target.value)}
-                    type="date"
-                    min="2021-08-23"
-                    className="form-control mx-auto"
-                  />
-                  <br />
-
-                  {/**
-                            <button type="button" className="btn btn-success" id="adicionar-mais-dias"
-                            onclick="javascript:alert('Função com problemas, será implementada na segunda etapa, por favor ler o comentário no arquivo scrit.js')">Adicionar
-                            mais dias</button>
-                        */}
-                </div>
-
-                <div className="col-6">
-                  <label for="enunciado">
-                    Selecione o horário do inicio do Agendamento:{' '}
-                  </label>
-                  <br />
-
-                  <br />
-
-                  <input
-                    onChange={(e) => setHoraInicio(e.target.value)}
-                    type="time"
-                    className="form-control mx-auto "
-                  />
-                  <br />
-
-                  <label for="enunciado">
-                    Selecione o horário do inicio do Agendamento:{' '}
-                  </label>
-                  <br />
-
-                  <br />
-
-                  <input
-                    onChange={(e) => setHoraFim(e.target.value)}
-                    type="time"
-                    className="form-control mx-auto "
-                  />
-                  <br />
-
-                  {/**
-                            <button type="button" className="btn btn-success" id="adicionar-mais-dias"
-                            onclick="javascript:alert('Função com problemas, será implementada na segunda etapa, por favor ler o comentário no arquivo scrit.js')">Adicionar
-                            mais dias</button>
-                        */}
-                </div>
-                <br />
-              </div>
-            </div>
             <div>
               {carregando ? (
                 <div className="spinner-border text-secondary" role="status">

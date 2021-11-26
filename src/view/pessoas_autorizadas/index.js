@@ -30,6 +30,7 @@ function PessoasAutorizadas() {
     <body>
       <NavBar />
       <div className="pessoas-content bg-dark text-white">
+        <h1>Lista de pessoas autorizadas</h1>
         <div className="lista">
           {cards.map((item) => (
             <Card

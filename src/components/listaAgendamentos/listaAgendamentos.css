@@ -1,6 +1,5 @@
 .cartao {
-  height: 300px;
-  background: black;
+  max-height: 250px;
   padding: 20px;
   padding-top: 30px;
   margin: 10px;
@@ -8,26 +7,9 @@
   overflow: auto;
 }
 
-.btn-detalhes {
-  background-color: #0671c8;
-  color: #fff;
-}
-
-.btn-detalhes:hover {
-  background-color: #008cff;
-  color: #fff;
-  box-shadow: none;
-  padding-bottom: 3px;
-}
-
 .conteudo-agendamento {
   text-align: left;
   margin-top: 15px;
-}
-
-.texto-text {
-  max-height: fit-content;
-  overflow: auto;
 }
 
 .cartao-expirado {

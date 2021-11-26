@@ -12,8 +12,8 @@ function ListaAgendamentos({
   responsavelPeloAgendamento,
 }) {
   return (
-    <div className={`col-md-3 col-sm-12 cartao text-center ${status}`}>
-      <div className="texto-body">
+    <div className={`cartao  ${status}`}>
+      <div>
         <h5>Sala: {sala}</h5>
         <p className="conteudo-agendamento">
           Prédio: {predio} <br />

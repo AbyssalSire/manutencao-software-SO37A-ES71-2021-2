@@ -22,14 +22,17 @@
   color: #fff;
 }
 
+.center {
+  text-align: center;
+}
+
 .input-horizontal {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  max-width: 70%;
+  justify-content: space-between;
+  align-items: flex-end;
+  /* max-width: 70%; */
   margin: auto;
-  padding: 30px;
 }
 
 textarea {
