@@ -1,8 +1,36 @@
 .cadastro-content {
-  width: 30%;
+  min-width: 80%;
+  margin: 20px auto;
+  padding: 30px;
+  /* background-color: blue; */
   border-radius: 20px;
 }
 
 .titulo-form {
   margin-bottom: 20px;
+}
+
+.input-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  max-width: 70%;
+  margin: auto;
+  padding: 30px;
+}
+
+.btn-cadastro {
+  font-weight: bold;
+  border-radius: 10px;
+  max-height: 50px;
+  width: 150px;
+  margin: 30px 0px;
+}
+
+label {
+  padding: 5px;
+}
+
+input-label {
+  width: 70%;
 }

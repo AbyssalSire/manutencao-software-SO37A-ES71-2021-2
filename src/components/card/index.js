@@ -1,35 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import './card.css'
+import React, { useEffect, useState } from 'react';
 import firebase from '../../config/firebase';
+import './card.css';
 
-function Card({key, nome, funcao, emailCadastrado, telefone, avatar, dadosExtras}) {
+function Card({
+  key,
+  nome,
+  funcao,
+  emailCadastrado,
+  telefone,
+  avatar,
+  dadosExtras,
+}) {
+  const [urlImagem, setUrlImagem] = useState();
 
-    const[urlImagem, setUrlImagem] = useState();
+  useEffect(() => {
+    firebase
+      .storage()
+      .ref(`imagens/${avatar}`)
+      .getDownloadURL()
+      .then((url) => {
+        setUrlImagem(url);
+      });
+  }, []);
 
-    useEffect(()=>{
-        firebase.storage().ref(`imagens/${avatar}`).getDownloadURL().then(url=>{
-            setUrlImagem(url);
-        })
-    });
+  return (
+    <div className="cartao">
+      <img src={urlImagem} id="imgCard" alt="" className="img-cartao" />
 
-    return (
-        <div className="col-md-3 col-sm-12 cartao">
-            <img src={urlImagem} id="imgCard" alt="" className="card-img-top img-cartao" />
-
-            <div className="card-body">
-                <h5>{nome}</h5>
-                <h5>Função: {funcao}</h5>
-                <p className="card-text text-justify">
-                E-mail para contato: {emailCadastrado} <br /> 
-                Telefone para contato: {telefone} <br /> 
-                Dados extras: {dadosExtras} <br />
-                </p>
-            </div>
-        </div>
-
-    )
+      <div>
+        <h5>{nome}</h5>
+        <h5>Função: {funcao}</h5>
+        <p className="conteudo-card">
+          E-mail para contato: {emailCadastrado} <br />
+          Telefone para contato: {telefone} <br />
+          Dados extras: {dadosExtras} <br />
+        </p>
+      </div>
+    </div>
+  );
 }
 
 export default Card;

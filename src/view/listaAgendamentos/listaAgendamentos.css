@@ -1,0 +1,22 @@
+.agendamentos-content {
+  width: 80%;
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+h2 {
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 30px;
+}
+
+.agendamentos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  margin: auto;
+  margin-bottom: 50px;
+}

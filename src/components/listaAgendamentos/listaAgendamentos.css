@@ -1,27 +1,15 @@
 .cartao {
-  background: black;
+  max-height: 250px;
   padding: 20px;
+  padding-top: 30px;
   margin: 10px;
-  max-width: 25%;
-  height: fit-content;
+  width: 31%;
   overflow: auto;
 }
 
-.btn-detalhes {
-  background-color: #0671c8;
-  color: #fff;
-}
-
-.btn-detalhes:hover {
-  background-color: #008cff;
-  color: #fff;
-  box-shadow: none;
-  padding-bottom: 3px;
-}
-
-.texto-text {
-  max-height: fit-content;
-  overflow: auto;
+.conteudo-agendamento {
+  text-align: left;
+  margin-top: 15px;
 }
 
 .cartao-expirado {
@@ -29,9 +17,17 @@
 }
 
 .cartao-emandamento {
+<<<<<<< HEAD
+  background-color: rgb(144, 136, 14, 0.52);
+}
+
+.cartao-reservado {
+  background-color: rgb(255, 0, 0, 0.2);
+=======
   background-color: rgba(144, 136, 14, 0.52);
 }
 
 .cartao-reservado {
   background-color: rgba(255, 0, 0, 0.2);
+>>>>>>> 34110115a9f0092a5050982d3006964d9d9e33c1
 }

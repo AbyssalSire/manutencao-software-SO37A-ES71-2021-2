@@ -64,9 +64,9 @@ function Login() {
     <body>
       <NavBar />
       <form
-        className="form-signin mx-auto text-center"
+        className="bg-dark text-white login-content"
         action="../paginas/index.html">
-        <div className="login-content container p-3 my-3 bg-dark text-white">
+        <div className=" ">
           {useSelector((state) => state.usuarioLogado) > 0 ? (
             <Redirect to="/"></Redirect>
           ) : null}
@@ -95,7 +95,7 @@ function Login() {
               />
             </div>
           </div>
-          <div className="text-center mb-3">
+          <div className="">
             {carregando ? (
               <div className="spinner-border text-secondary" role="status">
                 <span className="sr-only"></span>

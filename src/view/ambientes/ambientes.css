@@ -1,0 +1,15 @@
+.lista {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  margin: auto;
+}
+
+.ambientes-content {
+  width: 80%;
+  margin: 20px auto;
+  padding: 30px;
+  /* background-color: blue; */
+  border-radius: 20px;
+}
