@@ -219,29 +219,12 @@ function Agendamento() {
               <div className="form-group">
                 <label for="enunciado">Pessoa requisitando agendamento: </label>
                 <input
-<<<<<<< HEAD
                   onChange={(e) => setPessoaNome(e.target.value)}
                   type="text"
                   className="form-control mx-auto"
                   id="pessoa-resp"
                   name="pessoa-rest"
                   placeholder="ex.: João Silva"
-=======
-                  onChange={(e) => setHoraInicio(e.target.value)}
-                  type="time"
-                  className="form-control mx-auto "
-                />
-                <br />
-                <label for="enunciado">
-                  Selecione o horário do fim do Agendamento:{' '}
-                </label>
-                <br />
-                <br />
-                <input
-                  onChange={(e) => setHoraFim(e.target.value)}
-                  type="time"
-                  className="form-control mx-auto "
->>>>>>> 34110115a9f0092a5050982d3006964d9d9e33c1
                 />
               </div>
             </div>
